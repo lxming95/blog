@@ -60,7 +60,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/随笔">文章</a></li>
 	        
 			</ul>
 		</nav>
@@ -82,6 +82,10 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="weibo" target="_blank" href="/@不是阳光也要灿烂" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/984794142" title="qq"><i class="icon-qq"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -117,6 +121,10 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="weibo" target="_blank" href="/@不是阳光也要灿烂" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/984794142" title="qq"><i class="icon-qq"></i></a>
+			        
 				</div>
 			</nav>
 
@@ -126,7 +134,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/随笔">文章</a></li>
 		        
 				</ul>
 			</nav>
@@ -142,6 +150,100 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-部署hexo走过的那些坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/19/部署hexo走过的那些坑/">部署hexo走过的那些坑</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/19/部署hexo走过的那些坑/" class="archive-article-date">
+  	<time datetime="2017-08-19T00:04:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我是在<a href="http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external">这里</a>看到的教程，紧跟着去了<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">另一个站</a>,然后想自己做一个，走过了一路的坑，关于各种软件的介绍我不在赘述，下面进入正文。</p>
+<p>###准备过程###<br>首先你电脑需要安装git，然后安装软件<a href="http://nodejs.cn/download/" target="_blank" rel="external">node</a>直接去官网下载安装，我安装的版本已经自带了npm所以不用自己安装。上面两个软件都安装好之后就是安装hexo了</p>
+<p>运行命令尽量使用 Git bash 尽量不要使用自带的cmd，否则有可能出现意想不到的错误。无法写入或者安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure>
+<p>然后查看是否安装完成，这时候为第一个坑埋下了伏笔、、、、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ hexo version</div><div class="line">hexo: 3.3.8</div><div class="line">hexo-cli: 1.0.3</div><div class="line">os: Windows_NT 6.1.7601 win32 x64</div><div class="line">http_parser: 2.7.0</div><div class="line">node: 8.3.0</div><div class="line">v8: 6.0.286.52</div><div class="line">uv: 1.13.1</div><div class="line">zlib: 1.2.11</div><div class="line">ares: 1.10.1-DEV</div><div class="line">modules: 57</div><div class="line">openssl: 1.0.2l</div><div class="line">icu: 59.1</div><div class="line">unicode: 9.0</div><div class="line">cldr: 31.0.1</div><div class="line">tz: 2017b</div></pre></td></tr></table></figure>
+<p>查看安装完成之后就可以创建一个新的hexo项目了，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init project name</div></pre></td></tr></table></figure></p>
+<p>然后你会发现在当前目录下多一个你项目名的文件夹，然后就可以启动本地服务查看一下效果了# 进入目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> project name</div><div class="line"></div><div class="line"><span class="comment"># 启动hexo服务器</span></div><div class="line">$ hexo server</div><div class="line"></div><div class="line">[info] Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</div></pre></td></tr></table></figure>
+<p>有关hexo目录的介绍以及配置文件的介绍，请查看我引用的第二个<a href="http://nodejs.cn/download/" target="_blank" rel="external">网址</a>,然后就是各种页面修改，以及主题美化了，这些都是一些界面的配置，具体请百度，这里不赘述。</p>
+<p>下面坑开始了。睁大眼睛哦</p>
+<p>###First###<br>现在进入到把hexo部署到github的阶段了，上面我提到hexo version 为坑埋下了伏笔，是因为教程用的hexo是2.x的而我安装的是3.x的所以，问题来了，当你改好配置文件就是部署的那一部分之后，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">  <span class="built_in">type</span>: github</div><div class="line">  repo: https://github.com/你github的帐号/blog.git,master</div></pre></td></tr></table></figure></p>
+<p>然后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#构建静态文件</span></div><div class="line">$ hexo g  </div><div class="line"><span class="comment">#部署</span></div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<p>然后你会发现出错了 not found github，然后网上查了各种教程，什么改https改成http啊，各种，然后特别混乱还没整好。<br>下面是我的做法：</p>
+<ul>
+<li>更改github为git</li>
+<li>3.x的hexo需要安装一个插件<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	npm install hexo-deployer-git --save</div><div class="line">```	</div><div class="line">*    然后是给本地git添加一个ssh key 并且添加到github详见[教程](http://www.cnblogs.com/superGG1990/p/6844952.html),也就是需要认证一下才能上传</div><div class="line"></div><div class="line">至此第一个坑爬过了。</div><div class="line"><span class="comment">###Second###</span></div><div class="line">然后就是将域名附加到我们的github仓库了，首先申请一个域名，然后配置域名解析 我申请的是阿里云的域名，然后这是域名解析配置</div><div class="line"> ![dns配置](../photo/img/2.png)</div><div class="line"></div><div class="line">下面就是配置github的CNAME了，首先在主分支中新建一个CNAME文件没有后缀，我的项目当时有两个个分支一个master一个gh-pages，gh-pages分支是因为我看教程上面的是这个，所以我才加了一个，然后我添加CNAME到master而主分支是gh-pages，然后就是各种404访问不到，如果你分支比较多记得在主分支中新建CNAME，然后在里面写上你的域名就一行</div><div class="line">```bash</div><div class="line">example.com</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里就是第二个坑了 ，一定在主分支加CNAME<br>其实还可以在设置里面设置，Setting-&gt;Options找到GitHub Pages <img src="../photo/img/2.png" alt="dns配置"> 然后设置域名就可以了</p>
+<p>未完待续，今天回家，迟点更。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/19/部署hexo走过的那些坑/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-新的开始" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -180,10 +282,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">开始</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">我</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -195,10 +293,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/第一天/" class="article-tag-list-link color4">第一天</a>
         		</li>
       		
 		</ul>
@@ -405,7 +499,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">我</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
