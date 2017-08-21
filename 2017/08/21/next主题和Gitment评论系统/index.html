@@ -98,7 +98,7 @@
 <meta name="keywords" content="Hexo的鼓捣">
 <meta property="og:type" content="article">
 <meta property="og:title" content="next主题和Gitment评论系统">
-<meta property="og:url" content="http://blog.lxming.top/2017/08/21/next主题和Gitment评论系统/index.html">
+<meta property="og:url" content="https://lxming95.coding.me/My-Blog/2017/08/21/next主题和Gitment评论系统/index.html">
 <meta property="og:site_name" content="刘晓明的Blog">
 <meta property="og:description" content="Hexo 搭配next主题添加Gitment评论系统 由于使用yiila主题感觉部分地方有些bug，所以换用next主题，然后又想添加一个评论模块，发现多说以及网易云跟帖关闭了，恰巧看到了Gitment：使用 GitHub Issues搭建评论系统于是乎就想给next主题添加一个评论功能，在next主题的教程里虽然介绍了几种评论，但是在我大天朝，DISQUS貌似被墙了Facebook Commen">
 <meta property="og:locale" content="zh-Hans">
@@ -137,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.lxming.top/2017/08/21/next主题和Gitment评论系统/"/>
+  <link rel="canonical" href="https://lxming95.coding.me/My-Blog/2017/08/21/next主题和Gitment评论系统/"/>
 
 
 
@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.lxming.top/2017/08/21/next主题和Gitment评论系统/">
+    <link itemprop="mainEntityOfPage" href="https://lxming95.coding.me/My-Blog/2017/08/21/next主题和Gitment评论系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘晓明">
@@ -337,7 +337,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#将下面的代码添加到你的页面：</span></div><div class="line">&lt;div id=<span class="string">"container"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</div><div class="line">&lt;script src=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  var gitment = new Gitment(&#123;</div><div class="line">    id: <span class="string">'页面 ID'</span>, // 可选。默认为 location.href</div><div class="line">    owner: <span class="string">'你的 GitHub ID'</span>, // 可以是你的GitHub用户名，也可以是github id</div><div class="line">    repo: <span class="string">'存储评论的 github repo'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">      client_id: <span class="string">'你的 client id'</span>,</div><div class="line">      client_secret: <span class="string">'你的 client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">  &#125;)</div><div class="line">  gitment.render(<span class="string">'container'</span>)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p>关于这段代码的说明当初我是没有看懂，因为我不知道页面在哪里，于是我嵌入到.md文件里面了，因为markdown是兼容html的。然后发现成功了，但是出现了下面问题，没有办法初始化，而且关于参数的介绍我也有点迷惑。<img src="https://note.youdao.com/yws/api/personal/file/WEBa55831b0d78c0023ed7e374160f278f2?method=getImage&amp;cstk=Ies3eSId" alt="error"><br>在作者的<a href="https://github.com/imsun/gitment/issues/18" target="_blank" rel="external">Issue</a>我看到几种办法。关于参数的介绍<br>owner:是用户的ID也就是你的用户的名字，不是登陆的帐号<br>repo就是你Hexo博客所在仓库。<br>client_id 和client_secret 根据前文提到的教程填写就好了。<br>以我的仓库为例”<a href="https://github.com/lxming95/blog“" target="_blank" rel="external">https://github.com/lxming95/blog“</a><br>上面那段代码应该写为</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"container"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</div><div class="line">&lt;script src=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var gitment = new Gitment(&#123;</div><div class="line">  //id: <span class="string">'页面 ID'</span>, // 注释掉或者删掉</div><div class="line">  location.href</div><div class="line">  owner: <span class="string">'lxming95'</span>,</div><div class="line">  repo: <span class="string">'blog'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">      client_id: <span class="string">'你的 client id'</span>,</div><div class="line">      client_secret: <span class="string">'你的 client secret'</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;)</div><div class="line">gitment.render(<span class="string">'container'</span>)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>成品见我的<a href="http://blog.lxming.top/2017/08/19/%E9%83%A8%E7%BD%B2hexo%E8%B5%B0%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91/#more">网站</a></p>
+<p>成品见我的<a href="http://blog.lxming.top/2017/08/19/%E9%83%A8%E7%BD%B2hexo%E8%B5%B0%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91/#more" target="_blank" rel="external">网站</a></p>
 <p><div id="container"></div></p>
 <p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
