@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo的鼓捣,随笔," />
+  <meta name="keywords" content="随笔,Hexo的鼓捣," />
 
 
 
@@ -95,7 +95,7 @@
 
 
 <meta name="description" content="首先我是在这里看到的教程，紧跟着去了另一个站,然后想自己做一个，走过了一路的坑，关于各种软件的介绍我不在赘述，下面进入正文。 准备过程首先你电脑需要安装git，然后安装软件node直接去官网下载安装，我安装的版本已经自带了npm所以不用自己安装。上面两个软件都安装好之后就是安装hexo了 运行命令尽量使用 Git bash 尽量不要使用自带的cmd，否则有可能出现意想不到的错误。无法写入或者安装">
-<meta name="keywords" content="Hexo的鼓捣,随笔">
+<meta name="keywords" content="随笔,Hexo的鼓捣">
 <meta property="og:type" content="article">
 <meta property="og:title" content="部署hexo走过的那些坑">
 <meta property="og:url" content="blog.lxming.top/2017/08/19/部署hexo走过的那些坑/index.html">
@@ -104,7 +104,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/photo/img/2.png">
 <meta property="og:image" content="/photo/img/domain.png">
-<meta property="og:updated_time" content="2017-08-21T07:11:38.631Z">
+<meta property="og:updated_time" content="2017-08-22T08:58:42.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="部署hexo走过的那些坑">
 <meta name="twitter:description" content="首先我是在这里看到的教程，紧跟着去了另一个站,然后想自己做一个，走过了一路的坑，关于各种软件的介绍我不在赘述，下面进入正文。 准备过程首先你电脑需要安装git，然后安装软件node直接去官网下载安装，我安装的版本已经自带了npm所以不用自己安装。上面两个软件都安装好之后就是安装hexo了 运行命令尽量使用 Git bash 尽量不要使用自带的cmd，否则有可能出现意想不到的错误。无法写入或者安装">
@@ -209,6 +209,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
@@ -290,6 +300,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -385,7 +417,7 @@ gitment.render('container')
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>支持我</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -417,9 +449,9 @@ gitment.render('container')
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo的鼓捣/" rel="tag"># Hexo的鼓捣</a>
-          
             <a href="/tags/随笔/" rel="tag"># 随笔</a>
+          
+            <a href="/tags/Hexo的鼓捣/" rel="tag"># Hexo的鼓捣</a>
           
         </div>
       
@@ -536,10 +568,10 @@ gitment.render('container')
             
             
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">1</span>
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -548,7 +580,7 @@ gitment.render('container')
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -103,7 +103,7 @@
 <meta property="og:description" content="Hexo 搭配next主题添加Gitment评论系统 由于使用yiila主题感觉部分地方有些bug，所以换用next主题，然后又想添加一个评论模块，发现多说以及网易云跟帖关闭了，恰巧看到了Gitment：使用 GitHub Issues搭建评论系统于是乎就想给next主题添加一个评论功能，在next主题的教程里虽然介绍了几种评论，但是在我大天朝，DISQUS貌似被墙了Facebook Commen">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBa55831b0d78c0023ed7e374160f278f2?method=getImage&cstk=Ies3eSId">
-<meta property="og:updated_time" content="2017-08-21T09:17:50.880Z">
+<meta property="og:updated_time" content="2017-08-22T08:58:41.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="next主题和Gitment评论模块">
 <meta name="twitter:description" content="Hexo 搭配next主题添加Gitment评论系统 由于使用yiila主题感觉部分地方有些bug，所以换用next主题，然后又想添加一个评论模块，发现多说以及网易云跟帖关闭了，恰巧看到了Gitment：使用 GitHub Issues搭建评论系统于是乎就想给next主题添加一个评论功能，在next主题的教程里虽然介绍了几种评论，但是在我大天朝，DISQUS貌似被墙了Facebook Commen">
@@ -208,6 +208,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
@@ -290,6 +300,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -368,7 +400,7 @@ gitment.render('container')
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>支持我</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -423,8 +455,8 @@ gitment.render('container')
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/22/SQLAlchemy学习/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/22/SQLAlchemy学习/" rel="prev" title="SQLAlchemy学习">
+                SQLAlchemy学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -517,10 +549,10 @@ gitment.render('container')
             
             
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">1</span>
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -529,7 +561,7 @@ gitment.render('container')
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
