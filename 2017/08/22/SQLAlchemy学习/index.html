@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="SQLAlchemy学习 SQLAlchemy是Python世界中最广泛使用的ORM（对象关系映射，Object Relational Mapping）工具之一，它采用了类似于Java里Hibernate的数据映射模型。 准备过程首先安装SQLAlchemy1pip install SQLAlchemy 安装Python-MySQL驱动Python 2.x1234# centos安装MySQLyu">
+<meta name="keywords" content="程序猿,学僧，coder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刘晓明的Blog">
+<meta property="og:url" content="blog.lxming.top/2017/08/22/SQLAlchemy学习/index.html">
+<meta property="og:site_name" content="刘晓明的Blog">
+<meta property="og:description" content="SQLAlchemy学习 SQLAlchemy是Python世界中最广泛使用的ORM（对象关系映射，Object Relational Mapping）工具之一，它采用了类似于Java里Hibernate的数据映射模型。 准备过程首先安装SQLAlchemy1pip install SQLAlchemy 安装Python-MySQL驱动Python 2.x1234# centos安装MySQLyu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-22T08:50:47.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="刘晓明的Blog">
+<meta name="twitter:description" content="SQLAlchemy学习 SQLAlchemy是Python世界中最广泛使用的ORM（对象关系映射，Object Relational Mapping）工具之一，它采用了类似于Java里Hibernate的数据映射模型。 准备过程首先安装SQLAlchemy1pip install SQLAlchemy 安装Python-MySQL驱动Python 2.x1234# centos安装MySQLyu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="blog.lxming.top/2017/08/22/SQLAlchemy学习/"/>
+
+
+
+
+
+  <title> | 刘晓明的Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘晓明的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我是菜鸟想飞得更高</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.lxming.top/2017/08/22/SQLAlchemy学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘晓明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘晓明的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T16:50:47+08:00">
+                2017-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/22/SQLAlchemy学习/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="SQLAlchemy学习"><a href="#SQLAlchemy学习" class="headerlink" title="SQLAlchemy学习"></a><em>SQLAlchemy学习</em></h2><hr>
+<p>SQLAlchemy是Python世界中最广泛使用的ORM（对象关系映射，Object Relational Mapping）工具之一，它采用了类似于Java里Hibernate的数据映射模型。</p>
+<h3 id="准备过程"><a href="#准备过程" class="headerlink" title="准备过程"></a>准备过程</h3><h4 id="首先安装SQLAlchemy"><a href="#首先安装SQLAlchemy" class="headerlink" title="首先安装SQLAlchemy"></a>首先安装SQLAlchemy</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install SQLAlchemy</div></pre></td></tr></table></figure>
+<h4 id="安装Python-MySQL驱动"><a href="#安装Python-MySQL驱动" class="headerlink" title="安装Python-MySQL驱动"></a>安装Python-MySQL驱动</h4><p>Python 2.x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># centos安装MySQL</div><div class="line">yum install mysql-devel</div><div class="line"># 安装Python MySQL驱动</div><div class="line">pip install MySQL-python</div></pre></td></tr></table></figure></p>
+<p>Python 3.x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install PyMySQL</div></pre></td></tr></table></figure></p>
+<p>win7<br><a href="http://www.codegood.com/downloads" target="_blank" rel="external">这里下载</a>成品安装，我是win7-64位的 安装出现问题见<a href="http://blog.csdn.net/wklken/article/details/7253245" target="_blank" rel="external">这里</a></p>
+<h3 id="定义映射"><a href="#定义映射" class="headerlink" title="定义映射"></a>定义映射</h3><p>还是使用常用用户-邮件表吧，一个用户表users，一个电子邮件表addresses，两者一对多的关系。我们先定义这两个映射：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">from sqlalchemy.ext.declarative import declarative_base</div><div class="line">from sqlalchemy import Column, Integer, String</div><div class="line">from sqlalchemy import ForeignKey</div><div class="line">from sqlalchemy.orm import relationship</div><div class="line">Base = declarative_base()</div><div class="line">class Address(Base):</div><div class="line">    &quot;&quot;&quot;电子邮件表 class&quot;&quot;&quot;</div><div class="line">    __tablename__ = &apos;addresses&apos;</div><div class="line">    id = Column(Integer, primary_key=True)</div><div class="line">    email_address = Column(String(30), nullable=False)</div><div class="line">    user_id = Column(Integer, ForeignKey(&apos;users.id&apos;))</div><div class="line">    user = relationship(&quot;User&quot;, back_populates=&quot;addresses&quot;)</div><div class="line">    def __repr__(self):</div><div class="line">        return &quot;&lt;Address(email_address=&apos;&#123;&#125;&apos;)&gt;&quot;.format(self.email_address)</div><div class="line">class User(Base):</div><div class="line">    &quot;&quot;&quot;用户表 class&quot;&quot;&quot;</div><div class="line">    __tablename__ = &apos;users&apos;</div><div class="line">    id = Column(Integer, primary_key=True)</div><div class="line">    name = Column(String(10))</div><div class="line">    fullname = Column(String(20))</div><div class="line">    password = Column(String(20))</div><div class="line">    addresses = relationship(&quot;Address&quot;, order_by=Address.id, back_populates=&quot;user&quot;)</div><div class="line">    def __repr__(self):</div><div class="line">        return &quot;&lt;User(name=&apos;&#123;&#125;&apos;, fullname=&apos;&#123;&#125;&apos;, password=&apos;&#123;&#125;&apos;)&gt;&quot;.format(</div><div class="line">            self.name, self.fullname, self.password)</div></pre></td></tr></table></figure></p>
+<p>有没有觉得和sql很像啊，其中relationship函数是sqlalchemy对关系之间提供的一种便利的调用方式, backref参数则对关系提供反向引用的声明是双向的，back_populates是单方面关联，一般成对出现，所以在user表中也会出现。</p>
+<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><p>通过create_engine()可以连接数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">from sqlalchemy import create_engine</div><div class="line"># 下面是MySQLdb/MySQL-Python默认写法</div><div class="line"># engine = create_engine(&apos;mysql://root:mysql@127.0.0.1:3306/test&apos;, echo=True)</div><div class="line"># 这里我使用的是PyMySQL</div><div class="line"># echo=True是开启调试，这样当我们执行文件的时候会提示相应的文字</div><div class="line">engine = create_engine(&apos;mysql+pymysql://root:mysql@127.0.0.1:3306/test&apos;, echo=True)</div></pre></td></tr></table></figure>
+<p>现在我们只是定义了表映射，而数据库里面是没有真实表的，这里我们使用Base类的metadata来帮我们自动创建表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Base.metadata.create_all(engine)</div></pre></td></tr></table></figure>
+<h3 id="对数据库增删改查"><a href="#对数据库增删改查" class="headerlink" title="对数据库增删改查"></a>对数据库增删改查</h3><p>对数据库的操作需要使用session，session方法由session工厂类创建。<br>创建session工厂<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from sqlalchemy.orm import sessionmaker</div><div class="line">Session = sessionmaker(bind=engine)</div></pre></td></tr></table></figure></p>
+<h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">session = Session()  # 先使用工程类来创建一个session</div><div class="line">ed_user = User(name=&apos;ed&apos;, fullname=&apos;Ed Jones&apos;, password=&apos;edspassword&apos;)</div><div class="line">session.add(ed_user)</div><div class="line"># 同时创建多个</div><div class="line">session.add_all([</div><div class="line">    User(name=&apos;wendy&apos;, fullname=&apos;Wendy Williams&apos;, password=&apos;foobar&apos;),</div><div class="line">    User(name=&apos;mary&apos;, fullname=&apos;Mary Contrary&apos;, password=&apos;xxg527&apos;),</div><div class="line">    User(name=&apos;fred&apos;, fullname=&apos;Fred Flinstone&apos;, password=&apos;blah&apos;)])</div><div class="line"># 提交事务</div><div class="line">session.commit()</div></pre></td></tr></table></figure>
+<p>python代码还是那么容易理解。</p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>在session上面调用query()方法会创建一个Query对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">for user in session.query(User).order_by(User.id):</div><div class="line">    print(user.name, user.fullname)</div><div class="line"># 使用filter_by过滤</div><div class="line">for name in session.query(User.name).filter_by(fullname=&apos;Ed Jones&apos;):</div><div class="line">    print(name)</div><div class="line"># 使用sqlalchemy的SQL表达式语法过滤，可以使用python语句</div><div class="line">for name in session.query(User.name).filter(User.fullname==&apos;Ed Jones&apos;):</div><div class="line">    print(name)</div></pre></td></tr></table></figure>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">session.delete(ed_user) #ed_user是user类的一个实例</div><div class="line">session.query(User).filter_by(name=&apos;ed&apos;).count()</div></pre></td></tr></table></figure>
+<h3 id="一对多、多对多的关系"><a href="#一对多、多对多的关系" class="headerlink" title="一对多、多对多的关系"></a>一对多、多对多的关系</h3><p>一对多、多对多是通过ForeignKey来指明的</p>
+<ul>
+<li><p>一对多</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;code class=&quot;hljs mathematica&quot;&gt;class Parent(Base):</div><div class="line">    __tablename__ = &apos;parent&apos;</div><div class="line">    id = Column(Integer, primary_key=True)</div><div class="line">    children = relationship(&quot;Child&quot;, backref=&quot;parent&quot;)</div><div class="line"> </div><div class="line">class Child(Base):</div><div class="line">    __tablename__ = &apos;child&apos;</div><div class="line">    id = Column(Integer, primary_key=True)</div><div class="line">    parent_id = Column(Integer, ForeignKey(&apos;parent.id&apos;))&lt;/code&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多对一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;code class=&quot;hljs mathematica&quot;&gt;class Parent(Base):</div><div class="line">    __tablename__ = &apos;parent&apos;</div><div class="line">    id = Column(Integer, primary_key=True)</div><div class="line">    child_id = Column(Integer, ForeignKey(&apos;child.id&apos;))</div><div class="line">    child = relationship(&quot;Child&quot;, backref=&quot;parents&quot;)</div><div class="line"> </div><div class="line">class Child(Base):</div><div class="line">    __tablename__ = &apos;child&apos;</div><div class="line">    id = Column(Integer, primary_key=True)&lt;/code&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多对多<br>需要一个中间表和在relatonship 添加secondary参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;code class=&quot;hljs mathematica&quot;&gt;association_table = Table(&apos;association&apos;, Base.metadata,</div><div class="line">    Column(&apos;left_id&apos;, Integer, ForeignKey(&apos;left.id&apos;)),</div><div class="line">    Column(&apos;right_id&apos;, Integer, ForeignKey(&apos;right.id&apos;))</div><div class="line">)</div><div class="line"> </div><div class="line">class Parent(Base):</div><div class="line">    __tablename__ = &apos;left&apos;</div><div class="line">    id = Column(Integer, primary_key=True)</div><div class="line">    children = relationship(&quot;Child&quot;,</div><div class="line">                    secondary=association_table,</div><div class="line">                    backref=&quot;parents&quot;)</div><div class="line"> </div><div class="line">class Child(Base):</div><div class="line">    __tablename__ = &apos;right&apos;</div><div class="line">    id = Column(Integer, primary_key=True)&lt;/code&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>本文参考这篇<a href="http://www.2cto.com/kf/201512/453980.html" target="_blank" rel="external">教程</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/assets/img/weixin.png" alt="刘晓明 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/assets/img/alipay.png" alt="刘晓明 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/21/next主题和Gitment评论系统/" rel="next" title="next主题和Gitment评论模块">
+                <i class="fa fa-chevron-left"></i> next主题和Gitment评论模块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/img/me.png"
+               alt="刘晓明" />
+          <p class="site-author-name" itemprop="name">刘晓明</p>
+           
+              <p class="site-description motion-element" itemprop="description">菜鸟一枚</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lxming95" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5385175238" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLAlchemy学习"><span class="nav-number">1.</span> <span class="nav-text">SQLAlchemy学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备过程"><span class="nav-number">1.1.</span> <span class="nav-text">准备过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先安装SQLAlchemy"><span class="nav-number">1.1.1.</span> <span class="nav-text">首先安装SQLAlchemy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Python-MySQL驱动"><span class="nav-number">1.1.2.</span> <span class="nav-text">安装Python-MySQL驱动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义映射"><span class="nav-number">1.2.</span> <span class="nav-text">定义映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接数据库"><span class="nav-number">1.3.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数据库增删改查"><span class="nav-number">1.4.</span> <span class="nav-text">对数据库增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加用户"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询"><span class="nav-number">1.4.2.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">1.4.3.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多、多对多的关系"><span class="nav-number">1.5.</span> <span class="nav-text">一对多、多对多的关系</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘晓明</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=63466378";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3ny2x3bL37owRUMdSTeOfzJG-gzGzoHsz", "ozf3vjXX9pbIRvVFIgJlUpPw");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
